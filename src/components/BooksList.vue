@@ -13,15 +13,8 @@ import BookPreview from "./BookPreview.vue";
 import bookService from "../services/book.service";
 
 export default {
-  data() {
-    return {
-      books: bookService.query()
-    };
-  },
-  name: "BooksList",
-  props: {
-    msg: String
-  },
+  name: "book-list",
+  props: ["books"],
   components: {
     BookPreview
   }

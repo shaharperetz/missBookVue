@@ -2,13 +2,18 @@
 
 
 export default {
-    query
+    query,
+    getById
 }
 
 function query() {
     return books
 }
+function getById(id) {
 
+    return books.find(book => book.id === id)
+
+}
 
 let books = [{
     "id": "GXj93KOkqZoC",

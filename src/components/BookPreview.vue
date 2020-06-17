@@ -1,6 +1,6 @@
 <template>
   <div class="book-card flex a-center">
-    <img :src="book.thumbnail" alt srcset />
+    <img @click="goToDetails(book.id)" :src="book.thumbnail" alt srcset />
     <div class="book-card-data flex col">
       <h2>{{book.title}}</h2>
       <span>{{book.publishedDate}}</span>
@@ -12,7 +12,13 @@
 <script>
 export default {
   name: "BookPreview",
-  props: ["book"]
+  props: ["book"],
+  methods: {
+    goToDetails(id) {
+      console.log("goToDetails -> id", id);
+      this.$router.push(`/details/${id}`);
+    }
+  }
 };
 </script>
 

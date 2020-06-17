@@ -1,11 +1,16 @@
 <template>
   <div class="book-details-container flex swing-in-top-fwd">
     <img :src="book.thumbnail" alt srcset />
-    <div class="book-details-data">
+    <div class="book-details-data flex col space-between">
       <h2>{{book.title}}</h2>
+
       <p>{{book.description}}</p>
-      <span>{{book.publishedDate}}</span>
+      <div>
+        <p>Price: {{book.listPrice.isOnSale ? book.listPrice.amount : ''}}{{book.listPrice.isOnSale ? book.listPrice.currencyCode : ''}}</p>
+        <span>Published at: {{book.publishedDate}}</span>
+      </div>
     </div>
+    <button class="flex a-center j-center" @click="goBack">X</button>
   </div>
 </template>
 
@@ -25,7 +30,13 @@ export default {
   },
   name: "BookDetails",
   props: [],
-  components: {}
+  components: {},
+  methods: {
+    goBack() {
+      console.log("GOING BACK");
+      this.$router.push("/");
+    }
+  }
 };
 </script>
 
@@ -48,28 +59,49 @@ export default {
   transform: scale(1.1);
   filter: brightness(1.6);
 }
+.book-details-container button {
+  height: 3vh;
+  width: 3vh;
+  margin-right: -1vw;
+  margin-top: -1vw;
+  font-weight: bold;
+  color: rgba(34, 33, 33, 0.637);
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
 
+.book-details-container button:hover {
+  color: rgba(168, 167, 167, 0.637);
+}
 .book-details-container h2 {
   color: rgba(255, 255, 255, 0.459);
   font-size: 45px;
   margin-top: -10px;
+  padding: 5px 0px;
+  border-bottom: 1px solid rgba(92, 92, 92, 0.13);
 }
 .book-details-container span {
-  color: rgba(117, 98, 98, 0.288);
+  color: rgba(34, 34, 36, 0.692);
   font-size: 15px;
-  float: right;
+  position: relative;
+  bottom: -2vh;
+  left: -25vw;
+  //   justify-self: flex-start;
+  //   right: -25vw;
 }
 
 .swing-in-top-fwd {
   -webkit-animation: swing-in-top-fwd 2.5s
     cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
   animation: swing-in-top-fwd 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-  animation-delay: 0.5s;
+  animation-delay: 0.2s;
 }
 .book-details-data {
   padding: 10px;
   margin-left: 10px;
-  background: green;
 }
 
 @-webkit-keyframes swing-in-top-fwd {

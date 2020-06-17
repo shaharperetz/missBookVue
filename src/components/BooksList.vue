@@ -1,8 +1,6 @@
 <template>
-  <div class="books-list-container">
-    heyyyyyyyyyyyyyy
+  <div class="books-list-container flex a-center j-center wrap">
     <div v-for="(book, idx) in books" :key="idx">
-      sdfsdf
       <book-preview :book="book" />
     </div>
   </div>

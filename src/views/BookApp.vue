@@ -1,7 +1,5 @@
 <template>
   <div class="BookApp">
-    <h1>missBooks</h1>
-
     <div class="books-main-content">
       <BooksList />
     </div>
@@ -23,9 +21,10 @@ export default {
 
 <style>
 .books-main-content {
-  width: 90vw;
-  background-color: blue;
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
   margin: 0 auto;
-  height: 50vh;
+  min-height: 90vh;
+  padding-top: 20px;
 }
 </style>

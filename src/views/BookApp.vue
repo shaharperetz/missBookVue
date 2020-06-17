@@ -2,6 +2,8 @@
   <div class="BookApp">
     <h1>missBooks</h1>
     <BookFilter @filter="setFilter" />
+    <router-link to="/add">Add Book</router-link>
+    <router-view />
 
     <div class="books-main-content">
       <BooksList :books="bookToShow" />
@@ -26,8 +28,8 @@ export default {
     };
   },
 
-  created() {
-    this.books = bookService.query();
+  async created() {
+    this.books = await bookService.query();
   },
 
   computed: {

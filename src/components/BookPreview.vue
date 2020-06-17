@@ -33,6 +33,7 @@ export default {
 }
 
 .book-card img {
+  cursor: pointer;
   height: 30vh;
   border-radius: 10px;
   transition: 1s;

@@ -19,6 +19,9 @@ export default {
     mutations: {
         loadBooks(state, { books }) {
             state.books = books
+        },
+        addBook(state, { newBook }) {
+            state.books.unshift(newBook)
         }
 
 
@@ -28,6 +31,11 @@ export default {
             let books = await bookService.query()
             context.commit({ type: 'loadBooks', books });
             return books
+        },
+        async addBook({ commit }, { book }) {
+            let newBook = await bookService.addBook(book)
+            commit({ type: 'addBook', newBook })
+            return newBook
         }
     }
 

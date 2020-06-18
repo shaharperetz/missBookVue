@@ -2,10 +2,19 @@
 <template>
   <section class="add-book-modal">
     <button @click="closeModal">X</button>
-    <input type="text" @keyup.enter.stop.prevent="getGoogleBooks" v-model="googleSearch" />
-    <div v-if="googleBooks">
-      <div v-for="(book , idx) in googleBooks" :key="idx">{{book.volumeInfo.title}}</div>
-    </div>
+    <input
+      class="google-search"
+      type="text"
+      @keyup.enter.stop.prevent="getGoogleBooks"
+      v-model="googleSearch"
+    />
+    <select v-if="googleBooks">
+      <option
+        class="g-book"
+        v-for="(book , idx) in googleBooks"
+        :key="idx"
+      >{{book.volumeInfo.title}}</option>
+    </select>
   </section>
 </template>
 
@@ -34,3 +43,16 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.g-book {
+  width: 50%;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(88, 87, 87, 0.253);
+}
+
+.google-search {
+  margin: 0 auto;
+  display: block;
+}
+</style>

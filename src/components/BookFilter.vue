@@ -1,6 +1,6 @@
 <template>
   <section>
-    <input type="text" v-model="filterBy.searchStr" @input="filter" />
+    <input type="text" v-model="filterBy.searchStr" @input="filter" placeholder="Search" />
   </section>
 </template>
 
@@ -21,3 +21,4 @@ export default {
   }
 };
 </script>
+

@@ -23,13 +23,12 @@ export default {
     return {
       filterBy: {
         searchStr: ""
-      },
-      books: null
+      }
     };
   },
 
   async created() {
-    this.books = await bookService.query();
+    this.loadBooks();
   },
 
   computed: {
@@ -44,12 +43,20 @@ export default {
       });
 
       return bookToShow;
+    },
+
+    books() {
+      return this.$store.getters.books;
     }
   },
 
   methods: {
     setFilter(filterBy) {
       this.filterBy = { ...filterBy };
+    },
+
+    async loadBooks() {
+      await this.$store.dispatch({ type: "loadBooks" });
     }
   },
 

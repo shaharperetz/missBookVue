@@ -5,7 +5,7 @@
       <div class="book-card-data flex col">
         <h2>{{book.title}}</h2>
         <span>{{book.publishedDate}}</span>
-        <p>{{book.description}}</p>
+        <p class="book-desc" id="style-3">{{book.description}}</p>
       </div>
     </div>
 
@@ -105,5 +105,13 @@ export default {
 }
 .book-card-add-data p {
   padding: 0px 10px;
+}
+
+.book-desc {
+  overflow-y: scroll;
+}
+
+#style-3::-webkit-scrollbar-thumb {
+  background-color: #000000;
 }
 </style>

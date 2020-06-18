@@ -456,7 +456,8 @@ export default {
     getGoogleBooks,
     addBook,
     getNextPrevBooks,
-    removeBook
+    removeBook,
+    editBook
 }
 
 function addBook(book) {
@@ -488,6 +489,17 @@ async function removeBook(bookId) {
     gBooks.splice(idx, 1)
     storageService.saveToStorage(STORAGE_KEY, gBooks)
 
+}
+
+async function editBook(book) {
+    const idx = gBooks.findIndex(b => b.id === book.id)
+
+    console.log('helo', book)
+    console.log("editBook -> gBooks[idx]", gBooks[idx])
+    gBooks[idx].title = book.name
+    gBooks[idx].listPrice.amount = book.price
+    storageService.saveToStorage(STORAGE_KEY, gBooks)
+    return gBooks[idx]
 
 }
 

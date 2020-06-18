@@ -7,6 +7,8 @@
         <span>{{book.publishedDate}}</span>
         <p class="book-desc" id="style-3">{{book.description}}</p>
       </div>
+      <button class="remove-button" @click.stop="onRemoveBook(book.id)">remove book</button>
+      <router-link class="edit-button" :to="'/edit/'+book.id">Edit</router-link>
     </div>
 
     <div v-if="isAdd" class="book-card-add flex a-center">
@@ -17,8 +19,6 @@
         <p>{{book.volumeInfo.description}}</p>
       </div>
     </div>
-    <button class="remove-button" @click="onRemoveBook(book.id)">remove book</button>
-    <router-link :to="'/edit/'+book.id">Edit</router-link>
   </div>
 </template>
 
@@ -57,6 +57,7 @@ export default {
 <style scoped lang="scss">
 .book-card {
   // height: 10vw;
+  position: relative;
   width: 30vw;
   background-color: rgba(0, 128, 0, 0.192);
   margin: 10px;
@@ -125,6 +126,13 @@ export default {
 }
 
 .remove-button {
-  // float: bottom right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.edit-button {
+  position: absolute;
+  bottom: 0;
 }
 </style>

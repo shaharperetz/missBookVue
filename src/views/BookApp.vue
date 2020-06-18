@@ -71,12 +71,10 @@ export default {
 
 <style>
 .books-main-content {
-  width: 100vw;
   background-color: rgb(255, 255, 255);
   margin: 0 auto;
   min-height: 90vh;
   padding-top: 20px;
-  /* overflow-x: hidden; */
 }
 
 .open-add-modal {

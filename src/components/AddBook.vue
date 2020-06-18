@@ -3,25 +3,22 @@
   <section class="add-book-modal fade-in">
     <button class="exit-add-book-modal" @click="closeModal">X</button>
     <div class="add-book-header flex col a-center">
-      <label for="google-search">Search A book Online</label>
-      <input
-        placeholder="Search a Book"
-        class="google-search"
-        type="text"
-        id="google-search"
-        @keyup.enter.stop.prevent="getGoogleBooks"
-        v-model="googleSearch"
-      />
+      <!-- <label for="google-search">Search A book Online</label> -->
+      <div class="flex a-center j-center">
+        <input
+          placeholder="Search a Book"
+          class="google-search"
+          type="text"
+          id="google-search"
+          @change.stop.prevent="getGoogleBooks"
+          v-model="googleSearch"
+        />
+        <button @click="getGoogleBooks">Go!</button>
+      </div>
     </div>
     <div class="add-book-list">
       <BooksList :books="books" />
     </div>
-    <!-- <ul v-if="googleBooks">
-      <li class="g-book" v-for="(book , idx) in googleBooks" :key="idx">
-        {{book.volumeInfo.title}}
-        <button @click="addBook(book)">Add Book</button>
-      </li>
-    </ul>-->
   </section>
 </template>
 
@@ -82,6 +79,22 @@ export default {
   border-bottom: 1px solid rgba(0, 0, 0, 0.137);
   width: 100%;
 }
+
+.add-book-header button {
+  border: none;
+  font-size: 25px;
+  margin-bottom: 2vh;
+  color: aliceblue;
+  background-color: rgba(255, 255, 255, 0);
+  margin-left: -4vw;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.add-book-header button:hover {
+  transform: scale(1.2);
+}
+
 .add-book-modal label {
   font-size: 30px;
   margin: 20px;
@@ -110,11 +123,13 @@ export default {
 }
 
 .google-search {
+  width: 40vw;
+  height: 4vh;
   font-size: 20px;
   color: white;
   margin: 0 auto;
   display: block;
-  padding: 15px 35px;
+  padding: 5px 15px;
   margin-bottom: 2vh;
   background-color: rgba(128, 128, 128, 0.219);
   border: none;

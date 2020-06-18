@@ -478,7 +478,6 @@ function addBook(book) {
             isOnSale: false
         }
     }
-    // gBooks.unshift(bookAdd)
     storageService.saveToStorage(STORAGE_KEY, gBooks)
     return bookAdd
 }

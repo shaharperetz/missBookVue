@@ -7,8 +7,27 @@
         <span>{{book.publishedDate}}</span>
         <p class="book-desc" id="style-3">{{book.description}}</p>
       </div>
-      <button class="remove-button" @click.stop="onRemoveBook(book.id)">remove book</button>
-      <router-link class="edit-button" :to="'/edit/'+book.id">Edit</router-link>
+
+      <div class="more-options flex col a-center j-center">
+        <img
+          title="Delete"
+          class="remove-button"
+          src="../assets/delete.svg"
+          @click.stop="onRemoveBook(book.id)"
+          alt
+          srcset
+        />
+
+        <router-link class="edit-button" :to="'/edit/'+book.id">
+          <img
+            title="Edit"
+            src="../assets/register.svg"
+            @click.stop="onRemoveBook(book.id)"
+            alt
+            srcset
+          />
+        </router-link>
+      </div>
     </div>
 
     <div v-if="isAdd" class="book-card-add flex a-center">
@@ -60,7 +79,7 @@ export default {
   position: relative;
   width: 30vw;
   background-color: rgba(0, 128, 0, 0.192);
-  margin: 10px;
+  margin: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 11px -3px #00000062;
 }
@@ -125,14 +144,40 @@ export default {
   background-color: #000000;
 }
 
+.more-options {
+  width: 2vw;
+  margin-right: -1vw;
+  height: 100%;
+  background: rgb(53, 59, 72);
+  transition: 2s;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.more-options:hover {
+  width: 10vw;
+  height: 100%;
+}
+
 .remove-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  // position: absolute;
+  // top: -45%;
+  // right: 0px;
+  width: 30px;
 }
 
 .edit-button {
-  position: absolute;
-  bottom: 0;
+  // position: absolute;
+  // bottom: 5px;
+  // left: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.edit-button img {
+  width: 20px;
+  height: 30px;
+  padding: 0px;
+  margin-right: -15px;
 }
 </style>

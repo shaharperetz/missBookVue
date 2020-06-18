@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="navbar flex a-center space-between" id="nav">
-      <h1>missBooks</h1>
+      <h1 class="nav-logo" @click="onClickLogo">missBooks</h1>
       <div class="route-container">
         <router-link to="/">BookApp</router-link>
         <router-link to="/about">About</router-link>
@@ -10,10 +10,22 @@
     <router-view />
   </div>
 </template>
-
+<script>
+export default {
+  methods: {
+    onClickLogo() {
+      this.$router.push("/");
+    }
+  }
+};
+</script>
 <style lang="scss">
 .route-container {
   margin-right: 20px;
+}
+
+.nav-logo {
+  cursor: pointer;
 }
 
 #app {

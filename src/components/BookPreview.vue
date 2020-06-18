@@ -5,8 +5,10 @@
       <div class="book-card-data flex col">
         <h2>{{book.title}}</h2>
         <span>{{book.publishedDate}}</span>
-        <p>{{book.description}}</p>
+        <p class="book-desc" id="style-3">{{book.description}}</p>
       </div>
+      <button class="remove-button" @click.stop="onRemoveBook(book.id)">remove book</button>
+      <router-link class="edit-button" :to="'/edit/'+book.id">Edit</router-link>
     </div>
 
     <div v-if="isAdd" class="book-card-add flex a-center">
@@ -35,6 +37,9 @@ export default {
     goToDetails(id) {
       console.log("goToDetails -> id", id);
       this.$router.push(`/details/${id}`);
+    },
+    onRemoveBook(bookId) {
+      this.$store.dispatch({ type: "removeBook", bookId });
     }
   },
 
@@ -52,6 +57,7 @@ export default {
 <style scoped lang="scss">
 .book-card {
   // height: 10vw;
+  position: relative;
   width: 30vw;
   background-color: rgba(0, 128, 0, 0.192);
   margin: 10px;
@@ -109,5 +115,24 @@ export default {
   padding: 0px 10px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.book-desc {
+  overflow-y: scroll;
+}
+
+#style-3::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}
+
+.remove-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.edit-button {
+  position: absolute;
+  bottom: 0;
 }
 </style>

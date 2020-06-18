@@ -455,7 +455,9 @@ export default {
     getById,
     getGoogleBooks,
     addBook,
-    getNextPrevBooks
+    getNextPrevBooks,
+    removeBook,
+    editBook
 }
 
 function addBook(book) {
@@ -478,9 +480,27 @@ function addBook(book) {
             isOnSale: false
         }
     }
-    // gBooks.unshift(bookAdd)
     storageService.saveToStorage(STORAGE_KEY, gBooks)
     return bookAdd
+}
+
+async function removeBook(bookId) {
+    const idx = gBooks.findIndex(book => book.id === bookId)
+    gBooks.splice(idx, 1)
+    storageService.saveToStorage(STORAGE_KEY, gBooks)
+
+}
+
+async function editBook(book) {
+    const idx = gBooks.findIndex(b => b.id === book.id)
+
+    console.log('helo', book)
+    console.log("editBook -> gBooks[idx]", gBooks[idx])
+    gBooks[idx].title = book.name
+    gBooks[idx].listPrice.amount = book.price
+    storageService.saveToStorage(STORAGE_KEY, gBooks)
+    return gBooks[idx]
+
 }
 
 function getGoogleBooks(searchBy) {

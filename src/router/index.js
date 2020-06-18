@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import BookApp from '../views/BookApp.vue'
 import BookDetails from '../components/BookDetails.vue'
 import AddBook from '../components/AddBook';
+import About from '../views/About.vue';
 
 
 
@@ -25,6 +26,11 @@ const routes = [
     path: '/details/:id',
     name: 'details',
     component: BookDetails
+  },
+  {
+    path: '/about/',
+    name: 'about',
+    component: About
   },
 
 ]

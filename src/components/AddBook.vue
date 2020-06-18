@@ -8,13 +8,12 @@
       @keyup.enter.stop.prevent="getGoogleBooks"
       v-model="googleSearch"
     />
-    <select v-if="googleBooks">
-      <option
-        class="g-book"
-        v-for="(book , idx) in googleBooks"
-        :key="idx"
-      >{{book.volumeInfo.title}}</option>
-    </select>
+    <ul v-if="googleBooks">
+      <li class="g-book" v-for="(book , idx) in googleBooks" :key="idx">
+        {{book.volumeInfo.title}}
+        <button @click="addBook(book)">Add Book</button>
+      </li>
+    </ul>
   </section>
 </template>
 
@@ -39,6 +38,9 @@ export default {
     },
     closeModal() {
       this.$router.push("/");
+    },
+    async addBook(book) {
+      await this.$store.dispatch({ type: "addBook", book });
     }
   }
 };

@@ -1,9 +1,8 @@
 <template>
-  <div class="book-details-container flex swing-in-top-fwd">
+  <div v-if="book" class="book-details-container flex swing-in-top-fwd">
     <img :src="book.thumbnail" alt srcset />
     <div class="book-details-data flex col space-between">
       <h2>{{book.title}}</h2>
-
       <p>{{book.description}}</p>
       <div>
         <p>Price: {{book.listPrice.isOnSale ? book.listPrice.amount : ''}}{{book.listPrice.isOnSale ? book.listPrice.currencyCode : ''}}</p>
@@ -24,7 +23,6 @@ export default {
     };
   },
   async created() {
-    console.log("IMG HEREEEEE");
     const bookId = this.$route.params.id;
     this.book = await bookService.getById(bookId);
   },

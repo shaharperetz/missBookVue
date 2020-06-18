@@ -17,6 +17,8 @@
         <p>{{book.volumeInfo.description}}</p>
       </div>
     </div>
+    <button class="remove-button" @click="onRemoveBook(book.id)">remove book</button>
+    <router-link :to="'/edit/'+book.id">Edit</router-link>
   </div>
 </template>
 
@@ -35,6 +37,9 @@ export default {
     goToDetails(id) {
       console.log("goToDetails -> id", id);
       this.$router.push(`/details/${id}`);
+    },
+    onRemoveBook(bookId) {
+      this.$store.dispatch({ type: "removeBook", bookId });
     }
   },
 
@@ -117,5 +122,9 @@ export default {
 
 #style-3::-webkit-scrollbar-thumb {
   background-color: #000000;
+}
+
+.remove-button {
+  // float: bottom right;
 }
 </style>

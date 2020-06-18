@@ -455,7 +455,8 @@ export default {
     getById,
     getGoogleBooks,
     addBook,
-    getNextPrevBooks
+    getNextPrevBooks,
+    removeBook
 }
 
 function addBook(book) {
@@ -480,6 +481,14 @@ function addBook(book) {
     }
     storageService.saveToStorage(STORAGE_KEY, gBooks)
     return bookAdd
+}
+
+async function removeBook(bookId) {
+    const idx = gBooks.findIndex(book => book.id === bookId)
+    gBooks.splice(idx, 1)
+    storageService.saveToStorage(STORAGE_KEY, gBooks)
+
+
 }
 
 function getGoogleBooks(searchBy) {

@@ -4,6 +4,7 @@ import BookApp from '../views/BookApp.vue'
 import BookDetails from '../components/BookDetails.vue'
 import AddBook from '../components/AddBook';
 import About from '../views/About.vue';
+import BookEdit from '../views/BookEdit'
 
 
 
@@ -31,6 +32,12 @@ const routes = [
     path: '/about/',
     name: 'about',
     component: About
+  },
+  {
+    path: '/edit/:id',
+    name: 'edit',
+    component: BookEdit
+
   },
 
 ]

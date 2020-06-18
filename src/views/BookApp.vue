@@ -2,7 +2,7 @@
   <div class="BookApp">
     <h1>missBooks</h1>
     <BookFilter @filter="setFilter" />
-    <router-link to="/add">Add Book</router-link>
+    <router-link class="open-add-modal" to="/add">Add Book</router-link>
     <router-view />
 
     <div class="books-main-content">
@@ -76,5 +76,15 @@ export default {
   margin: 0 auto;
   min-height: 90vh;
   padding-top: 20px;
+  /* overflow-x: hidden; */
+}
+
+.open-add-modal {
+  position: absolute;
+  left: 4vw;
+  top: 15vh;
+  text-decoration: none;
+  font-size: 25px;
+  color: #4cd137;
 }
 </style>

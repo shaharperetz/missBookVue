@@ -80,7 +80,9 @@ export default {
   justify-self: start;
 }
 .book-card-data p {
-  padding: 0px 10px;
+  padding: 5px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .book-card-add {
@@ -105,5 +107,7 @@ export default {
 }
 .book-card-add-data p {
   padding: 0px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

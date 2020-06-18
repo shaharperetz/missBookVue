@@ -59,7 +59,7 @@ export default {
 <style scoped>
 .add-book-list {
   width: 100%;
-  height: 55vh;
+  height: 85%;
   background-color: rgba(0, 128, 0, 0);
   /* overflow: auto; */
 }
@@ -89,6 +89,7 @@ export default {
   margin-left: -4vw;
   cursor: pointer;
   transition: 0.5s;
+  outline: none;
 }
 
 .add-book-header button:hover {

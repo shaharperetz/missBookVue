@@ -50,6 +50,7 @@ export default {
 
 .book-details-container img {
   border-radius: 10px;
+  width: 20vw;
   transition: 1s;
 }
 
@@ -100,6 +101,7 @@ export default {
 .book-details-data {
   padding: 10px;
   margin-left: 10px;
+  width: 80vw;
 }
 
 @-webkit-keyframes swing-in-top-fwd {

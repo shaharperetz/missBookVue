@@ -20,4 +20,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.books-list-container {
+  height: 400px;
+  overflow: auto;
+  height: 100%;
+}
 </style>

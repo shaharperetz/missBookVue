@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="add-book-list">
-      <BooksList :books="books" />
+      <BooksList :books="books" :isAdd="true" />
     </div>
   </section>
 </template>
@@ -30,12 +30,12 @@ export default {
   data() {
     return {
       books: null,
-      googleSearch: "",
+      googleSearch: ""
     };
   },
 
   components: {
-    BooksList,
+    BooksList
   },
   methods: {
     async getGoogleBooks() {
@@ -48,15 +48,15 @@ export default {
       this.$router.push("/");
     },
     async addBook(book) {
-      this.$notify({
-        group: "foo",
-        title: "Important message",
-        text: "Hello user! This is a notification!",
-      });
+      // this.$notify({
+      //   group: "foo",
+      //   title: "Important message",
+      //   text: "Hello user! This is a notification!",
+      // });
 
       await this.$store.dispatch({ type: "addBook", book });
-    },
-  },
+    }
+  }
 };
 </script>
 

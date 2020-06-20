@@ -31,12 +31,8 @@
     </div>
 
     <div v-if="isAdd" class="book-card-add flex a-center">
-      <img
-        @click="goToDetails(book.id)"
-        :src="book.volumeInfo.imageLinks.thumbnail"
-        alt
-        srcset
-      />
+      <button @click="addBook(book)">ADD BOOK</button>
+      <img @click="goToDetails(book.id)" :src="book.volumeInfo.imageLinks.thumbnail" alt srcset />
       <div class="book-card-add-data flex col">
         <h2>{{ book.volumeInfo.title }}</h2>
         <span>{{ book.volumeInfo.publishedDate }}</span>
@@ -50,31 +46,39 @@
 export default {
   data() {
     return {
-      isAdd: false,
+      isAdd: false
     };
   },
 
   name: "BookPreview",
-  props: ["book"],
+  props: ["book", "isAddProp"],
 
   methods: {
+    async addBook(book) {
+      this.$notify({
+        group: "book-add",
+        title: "Book Saved!",
+        text: `The Book was Added to your collection!`
+      });
+
+      await this.$store.dispatch({ type: "addBook", book });
+    },
+
     goToDetails(id) {
       console.log("goToDetails -> id", id);
       this.$router.push(`/details/${id}`);
     },
     onRemoveBook(bookId) {
       this.$store.dispatch({ type: "removeBook", bookId });
-    },
+    }
   },
 
   created() {
-    let isAdd = this.$route.name;
-    if (isAdd === "add-book") {
-      console.log("BOOK ADD MODE ON");
+    console.log("created -> isAdd", this.isAddProp);
+    if (this.isAddProp) {
       this.isAdd = true;
     }
-    console.log("created -> isAdd ", isAdd);
-  },
+  }
 };
 </script>
 

@@ -457,7 +457,8 @@ export default {
     addBook,
     getNextPrevBooks,
     removeBook,
-    editBook
+    editBook,
+    addRating
 }
 
 function addBook(book) {
@@ -482,6 +483,16 @@ function addBook(book) {
     }
     storageService.saveToStorage(STORAGE_KEY, gBooks)
     return bookAdd
+}
+
+async function addRating(info) {
+    const id = info.book.id
+    console.log('server id', id)
+    const idx = gBooks.findIndex(book => book.id === id)
+    gBooks[idx].rating = info.star
+    return gBooks[idx]
+
+
 }
 
 async function removeBook(bookId) {

@@ -31,17 +31,16 @@
     </div>
 
     <div v-if="isAdd" class="book-card-add flex a-center">
-      <img
-        @click="goToDetails(book.id)"
-        :src="book.volumeInfo.imageLinks.thumbnail"
-        alt
-        srcset
-      />
+      <img @click="goToDetails(book.id)" :src="book.volumeInfo.imageLinks.thumbnail" alt srcset />
       <div class="book-card-add-data flex col">
         <h2>{{ book.volumeInfo.title }}</h2>
         <span>{{ book.volumeInfo.publishedDate }}</span>
         <p>{{ book.volumeInfo.description }}</p>
       </div>
+    </div>
+
+    <div class="book-rating" :v-if="book.rating">
+      <p>UNKNOWN gives this book {{book.rating}} stars</p>
     </div>
   </div>
 </template>
@@ -50,7 +49,7 @@
 export default {
   data() {
     return {
-      isAdd: false,
+      isAdd: false
     };
   },
 
@@ -64,7 +63,7 @@ export default {
     },
     onRemoveBook(bookId) {
       this.$store.dispatch({ type: "removeBook", bookId });
-    },
+    }
   },
 
   created() {
@@ -74,7 +73,7 @@ export default {
       this.isAdd = true;
     }
     console.log("created -> isAdd ", isAdd);
-  },
+  }
 };
 </script>
 

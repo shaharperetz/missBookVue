@@ -1,22 +1,31 @@
-<template>
-  <div v-if="book" class="book-details-container flex swing-in-top-fwd">
-    <img :src="book.thumbnail" alt srcset />
-    <div class="book-details-data flex col space-between">
-      <h2>{{book.title}}</h2>
-      <p>{{book.description}}</p>
-      <div>
-        <p>Price: {{book.listPrice.isOnSale ? book.listPrice.amount : ''}}{{book.listPrice.isOnSale ? book.listPrice.currencyCode : ''}}</p>
-        <span>Published at: {{book.publishedDate}}</span>
+<template v-if="OK">
+  <section class="flex col">
+    <div v-if="book" class="book-details-container flex swing-in-top-fwd">
+      <img :src="book.thumbnail" alt srcset />
+      <div class="book-details-data flex col space-between">
+        <h2>{{book.title}}</h2>
+        <p>{{book.description}}</p>
+        <div>
+          <p>Price: {{book.listPrice.isOnSale ? book.listPrice.amount : ''}}{{book.listPrice.isOnSale ? book.listPrice.currencyCode : ''}}</p>
+          <span>Published at: {{book.publishedDate}}</span>
+        </div>
       </div>
+      <button class="flex a-center j-center" @click="goBack">X</button>
     </div>
-    <button class="flex a-center j-center" @click="goBack">X</button>
-  </div>
+
+    <BookRating :grade="3" :maxStars="5" :hasCounter="true" :book="book" />
+  </section>
 </template>
 
 <script>
+import BookRating from "./BookRating.vue";
 import bookService from "../services/book.service";
 
 export default {
+  name: "book-details",
+  components: {
+    BookRating
+  },
   data() {
     return {
       book: null
@@ -26,9 +35,6 @@ export default {
     const bookId = this.$route.params.id;
     this.book = await bookService.getById(bookId);
   },
-  name: "BookDetails",
-  props: [],
-  components: {},
   methods: {
     goBack() {
       console.log("GOING BACK");

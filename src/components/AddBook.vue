@@ -31,12 +31,12 @@ export default {
   data() {
     return {
       books: null,
-      googleSearch: "",
+      googleSearch: ""
     };
   },
 
   components: {
-    BooksList,
+    BooksList
   },
   methods: {
     async getGoogleBooks() {
@@ -52,18 +52,13 @@ export default {
       this.$notify({
         group: "foo",
         title: "Important message",
-        text: "Hello user! This is a notification!",
+        text: "Hello user! This is a notification!"
       });
 
       await this.$store.dispatch({ type: "addBook", book });
-<<<<<<< HEAD
       eventBus.$emit("book-added", this.books);
     }
   }
-=======
-    },
-  },
->>>>>>> d9732da4d4a54c19e29bd2996a5602fbdee68a56
 };
 </script>
 

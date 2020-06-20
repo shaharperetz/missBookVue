@@ -54,6 +54,13 @@ export default {
         async editBook({ commit }, { book }) {
             let newBook = await bookService.editBook(book)
             commit({ type: 'editBook', newBook })
+        },
+
+        async addRating({ commit }, { info }) {
+            console.log(info)
+            let newBook = await bookService.addRating(info)
+            commit({ type: 'editBook', newBook })
+
         }
     }
 

@@ -3,12 +3,12 @@
     <div v-if="!isAdd" class="book-card flex a-center">
       <img @click="goToDetails(book.id)" :src="book.thumbnail" alt srcset />
       <div class="book-card-data flex col">
-        <h2>{{book.title}}</h2>
-        <span>{{book.publishedDate}}</span>
-        <p class="book-desc" id="style-3">{{book.description}}</p>
+        <h2>{{ book.title }}</h2>
+        <span>{{ book.publishedDate }}</span>
+        <p class="book-desc" id="style-3">{{ book.description }}</p>
       </div>
 
-      <div class="more-options flex col a-center j-center">
+      <div class="more-options">
         <img
           title="Delete"
           class="remove-button"
@@ -18,7 +18,7 @@
           srcset
         />
 
-        <router-link class="edit-button" :to="'/edit/'+book.id">
+        <router-link class="edit-button" :to="'/edit/' + book.id">
           <img
             title="Edit"
             src="../assets/register.svg"
@@ -31,11 +31,16 @@
     </div>
 
     <div v-if="isAdd" class="book-card-add flex a-center">
-      <img @click="goToDetails(book.id)" :src="book.volumeInfo.imageLinks.thumbnail" alt srcset />
+      <img
+        @click="goToDetails(book.id)"
+        :src="book.volumeInfo.imageLinks.thumbnail"
+        alt
+        srcset
+      />
       <div class="book-card-add-data flex col">
-        <h2>{{book.volumeInfo.title}}</h2>
-        <span>{{book.volumeInfo.publishedDate}}</span>
-        <p>{{book.volumeInfo.description}}</p>
+        <h2>{{ book.volumeInfo.title }}</h2>
+        <span>{{ book.volumeInfo.publishedDate }}</span>
+        <p>{{ book.volumeInfo.description }}</p>
       </div>
     </div>
   </div>
@@ -45,7 +50,7 @@
 export default {
   data() {
     return {
-      isAdd: false
+      isAdd: false,
     };
   },
 
@@ -59,7 +64,7 @@ export default {
     },
     onRemoveBook(bookId) {
       this.$store.dispatch({ type: "removeBook", bookId });
-    }
+    },
   },
 
   created() {
@@ -69,7 +74,7 @@ export default {
       this.isAdd = true;
     }
     console.log("created -> isAdd ", isAdd);
-  }
+  },
 };
 </script>
 
@@ -147,37 +152,42 @@ export default {
 .more-options {
   width: 2vw;
   margin-right: -1vw;
-  height: 100%;
+  height: 5vh;
   background: rgb(53, 59, 72);
   transition: 2s;
+
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
 .more-options:hover {
-  width: 10vw;
-  height: 100%;
+  background: rgba(53, 59, 72, 0);
+  width: 2vw;
+  height: 4vw;
+  opacity: 1;
 }
 
 .remove-button {
-  // position: absolute;
-  // top: -45%;
-  // right: 0px;
-  width: 30px;
+  position: absolute;
+  top: -45%;
+  right: 0px;
+  width: 25px;
 }
 
 .edit-button {
-  // position: absolute;
-  // bottom: 5px;
-  // left: 5px;
+  position: absolute;
+  top: 0px;
+  right: 2vw;
   text-decoration: none;
   color: black;
+  margin-top: -1vh;
 }
 
 .edit-button img {
   width: 20px;
-  height: 30px;
+  height: 35px;
   padding: 0px;
-  margin-right: -15px;
+  // margin-right: -15px;
+  // margin-top: -50%;
 }
 </style>

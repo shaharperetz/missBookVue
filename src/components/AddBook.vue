@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="add-book-list">
-      <BooksList :books="books" />
+      <BooksList :books="books" :isAdd="true" />
     </div>
   </section>
 </template>
@@ -25,7 +25,6 @@
 import BookService from "../services/book.service";
 import bookService from "../services/book.service";
 import BooksList from "@/components/BooksList.vue";
-import eventBus from "../services/eventBus.service";
 
 export default {
   data() {
@@ -49,14 +48,13 @@ export default {
       this.$router.push("/");
     },
     async addBook(book) {
-      this.$notify({
-        group: "foo",
-        title: "Important message",
-        text: "Hello user! This is a notification!"
-      });
+      // this.$notify({
+      //   group: "foo",
+      //   title: "Important message",
+      //   text: "Hello user! This is a notification!",
+      // });
 
       await this.$store.dispatch({ type: "addBook", book });
-      eventBus.$emit("book-added", this.books);
     }
   }
 };

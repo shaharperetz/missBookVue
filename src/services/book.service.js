@@ -490,6 +490,8 @@ async function addRating(info) {
     console.log('server id', id)
     const idx = gBooks.findIndex(book => book.id === id)
     gBooks[idx].rating = info.star
+    storageService.saveToStorage(STORAGE_KEY, gBooks)
+
     return gBooks[idx]
 
 

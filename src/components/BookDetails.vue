@@ -6,14 +6,21 @@
         <h2>{{book.title}}</h2>
         <p>{{book.description}}</p>
         <div>
-          <p>Price: {{book.listPrice.isOnSale ? book.listPrice.amount : ''}}{{book.listPrice.isOnSale ? book.listPrice.currencyCode : ''}}</p>
+          <p>{{book.listPrice.isOnSale ? 'Price: ' + book.listPrice.amount : ''}}{{book.listPrice.isOnSale ? book.listPrice.currencyCode : ''}}</p>
           <span>Published at: {{book.publishedDate}}</span>
         </div>
       </div>
       <button class="flex a-center j-center" @click="goBack">X</button>
     </div>
-
-    <BookRating :grade="3" :maxStars="5" :hasCounter="true" :book="book" />
+    <div v-if="book" class="book-rating">
+      <p>{{book.rating ? `This book has ${book.rating} stars` : 'No Rating yet'}}</p>
+    </div>
+    <BookRating
+      :grade="book.rating ? book.rating : 3"
+      :maxStars="5"
+      :hasCounter="true"
+      :book="book"
+    />
   </section>
 </template>
 
@@ -40,6 +47,9 @@ export default {
       console.log("GOING BACK");
       this.$router.push("/");
     }
+  },
+  watch() {
+    this.book.rating;
   }
 };
 </script>
@@ -62,7 +72,7 @@ export default {
 
 .book-details-container img:hover {
   transform: scale(1.1);
-  filter: brightness(1.6);
+  filter: brightness(1.3);
 }
 .book-details-container button {
   height: 3vh;

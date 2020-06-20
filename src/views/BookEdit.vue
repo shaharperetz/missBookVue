@@ -42,6 +42,11 @@ export default {
         id
       };
       this.$store.dispatch({ type: "editBook", book });
+      this.$notify({
+        group: "book-add",
+        title: "Book Saved!",
+        text: `Book Changed Successfully`
+      });
       this.$router.push(`/details/${id}`);
     }
   }
@@ -96,8 +101,15 @@ export default {
   outline: none;
   padding: 10px;
   border-radius: 5px;
-  background-color: lightblue;
+  background-color: rgba(173, 216, 230, 0.377);
   cursor: pointer;
   padding: 10px 30px 10px 30px;
+  color: rgba(255, 255, 255, 0.404);
+  font-size: 20px;
+  border: none;
+  transition: 0.5s;
+}
+.book-edit button:hover {
+  color: white;
 }
 </style>

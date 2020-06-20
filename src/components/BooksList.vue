@@ -1,7 +1,7 @@
 <template>
   <div id="style-1" class="books-list-container flex a-center j-center wrap">
     <div v-for="(book, idx) in books" :key="idx">
-      <book-preview :book="book" />
+      <book-preview :book="book" :isAddProp="isAdd" />
     </div>
   </div>
 </template>
@@ -12,10 +12,10 @@ import bookService from "../services/book.service";
 
 export default {
   name: "book-list",
-  props: ["books"],
+  props: ["books", "isAdd"],
   components: {
-    BookPreview,
-  },
+    BookPreview
+  }
 };
 </script>
 

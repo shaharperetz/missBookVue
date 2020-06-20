@@ -8,7 +8,7 @@
       </div>
     </div>
     <router-view />
-    <notifications group="foo" />
+    <notifications group="book-add" position="bottom left" :speed="700" width="500" hieght="400" />
   </div>
 </template>
 <script>
@@ -16,8 +16,8 @@ export default {
   methods: {
     onClickLogo() {
       this.$router.push("/");
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">

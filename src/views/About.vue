@@ -2,24 +2,23 @@
   <div class="flex col a-center about fade-in">
     <h1 class="tracking-in-expand-fwd">About</h1>
 
-    <p>
-      This project was made by
+    <p>This project was made by</p>
+
+    <div class="name-container flex space-between">
       <a
         title="Open LinkedIn Profile"
         target="_blank"
         rel="noopener noreferrer"
         href="https://www.linkedin.com/in/shahar-p-662a791a9/"
       >Shahar Peretz</a>
-      &&
+
       <a
         title="Open LinkedIn Profile"
         target="_blank"
         rel="noopener noreferrer"
         href="https://www.linkedin.com/in/abir-nadav-0389631a7/"
       >Abir Nadav</a>
-      <!-- <span>Abir Nadav</span> -->
-      (Abir did more work**)
-    </p>
+    </div>
     <h3>Technologies Used :</h3>
 
     <div class="tech-spans flex a-center">
@@ -34,8 +33,26 @@
 
 
 <style>
+.name-container {
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+  height: 20vh;
+  margin-bottom: 10vh;
+}
+
+.name-container a {
+  color: #4cd137;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.name-container a:hover {
+  animation: wobble-hor-bottom 1s both;
+}
+
 .about > * {
-  margin-bottom: 15vh;
+  margin-bottom: 10vh;
 }
 .about p {
   font-size: 26px;
@@ -52,6 +69,7 @@
 }
 
 .about h3 {
+  margin-top: -16vh;
   font-size: 23px;
 }
 
@@ -126,6 +144,69 @@
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     opacity: 1;
+  }
+}
+.wobble-hor-bottom {
+  -webkit-animation: wobble-hor-bottom 0.8s both;
+  animation: wobble-hor-bottom 0.8s both;
+}
+
+@-webkit-keyframes wobble-hor-bottom {
+  0%,
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-30px) rotate(-6deg);
+    transform: translateX(-30px) rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: translateX(15px) rotate(6deg);
+    transform: translateX(15px) rotate(6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-15px) rotate(-3.6deg);
+    transform: translateX(-15px) rotate(-3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(9px) rotate(2.4deg);
+    transform: translateX(9px) rotate(2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-6px) rotate(-1.2deg);
+    transform: translateX(-6px) rotate(-1.2deg);
+  }
+}
+@keyframes wobble-hor-bottom {
+  0%,
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-30px) rotate(-6deg);
+    transform: translateX(-30px) rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: translateX(15px) rotate(6deg);
+    transform: translateX(15px) rotate(6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-15px) rotate(-3.6deg);
+    transform: translateX(-15px) rotate(-3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(9px) rotate(2.4deg);
+    transform: translateX(9px) rotate(2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-6px) rotate(-1.2deg);
+    transform: translateX(-6px) rotate(-1.2deg);
   }
 }
 </style>

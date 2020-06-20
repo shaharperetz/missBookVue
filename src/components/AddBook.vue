@@ -27,6 +27,7 @@
 import BookService from "../services/book.service";
 import bookService from "../services/book.service";
 import BooksList from "@/components/BooksList.vue";
+import eventBus from "../services/eventBus.service";
 
 export default {
   data() {
@@ -51,6 +52,7 @@ export default {
     },
     async addBook(book) {
       await this.$store.dispatch({ type: "addBook", book });
+      eventBus.$emit("book-added", this.books);
     }
   }
 };

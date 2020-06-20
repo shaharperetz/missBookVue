@@ -16,6 +16,7 @@
 import BookFilter from "@/components/BookFilter";
 import BooksList from "@/components/BooksList.vue";
 import bookService from "../services/book.service";
+import eventBus from "../services/eventBus.service";
 export default {
   name: "BookApp",
 
@@ -29,6 +30,7 @@ export default {
 
   async created() {
     this.loadBooks();
+    eventBus.$on("book-added", () => console.log("book added sucssesfully"));
   },
 
   computed: {

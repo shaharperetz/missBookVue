@@ -1,11 +1,11 @@
 <template>
-  <div class="BookApp">
+  <div id="style-1" class="BookApp">
     <h1>missBooks</h1>
     <BookFilter @filter="setFilter" />
     <router-link class="open-add-modal" to="/add">Add Book</router-link>
     <router-view />
 
-    <div class="books-main-content">
+    <div id="style-1" class="books-main-content">
       <BooksList :books="bookToShow" />
     </div>
   </div>
@@ -23,8 +23,8 @@ export default {
   data() {
     return {
       filterBy: {
-        searchStr: ""
-      }
+        searchStr: "",
+      },
     };
   },
 
@@ -38,7 +38,7 @@ export default {
       let filter = this.filterBy;
       if (!filter.searchStr) return this.books;
       let bookToShow = [...this.books];
-      bookToShow = bookToShow.filter(book => {
+      bookToShow = bookToShow.filter((book) => {
         return book.title
           .toLowerCase()
           .includes(this.filterBy.searchStr.toLowerCase());
@@ -49,7 +49,7 @@ export default {
 
     books() {
       return this.$store.getters.books;
-    }
+    },
   },
 
   methods: {
@@ -59,17 +59,15 @@ export default {
 
     async loadBooks() {
       await this.$store.dispatch({ type: "loadBooks" });
-    }
+    },
   },
 
   components: {
     BooksList,
-    BookFilter
-  }
+    BookFilter,
+  },
 };
 </script>
-
-
 
 <style>
 .books-main-content {

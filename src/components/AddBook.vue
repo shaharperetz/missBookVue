@@ -1,4 +1,3 @@
-
 <template>
   <section class="add-book-modal fade-in">
     <button class="exit-add-book-modal" @click="closeModal">X</button>
@@ -22,7 +21,6 @@
   </section>
 </template>
 
-
 <script>
 import BookService from "../services/book.service";
 import bookService from "../services/book.service";
@@ -33,12 +31,12 @@ export default {
   data() {
     return {
       books: null,
-      googleSearch: ""
+      googleSearch: "",
     };
   },
 
   components: {
-    BooksList
+    BooksList,
   },
   methods: {
     async getGoogleBooks() {
@@ -51,22 +49,34 @@ export default {
       this.$router.push("/");
     },
     async addBook(book) {
+      this.$notify({
+        group: "foo",
+        title: "Important message",
+        text: "Hello user! This is a notification!",
+      });
+
       await this.$store.dispatch({ type: "addBook", book });
+<<<<<<< HEAD
       eventBus.$emit("book-added", this.books);
     }
   }
+=======
+    },
+  },
+>>>>>>> d9732da4d4a54c19e29bd2996a5602fbdee68a56
 };
 </script>
 
 <style scoped>
 .add-book-list {
   width: 100%;
-  height: 55vh;
+  height: 85%;
   background-color: rgba(0, 128, 0, 0);
   /* overflow: auto; */
 }
 
 .add-book-modal {
+  z-index: 500;
   background-color: rgb(53, 59, 72);
   width: 90vw;
   height: 85vh;
@@ -91,6 +101,7 @@ export default {
   margin-left: -4vw;
   cursor: pointer;
   transition: 0.5s;
+  outline: none;
 }
 
 .add-book-header button:hover {

@@ -1,5 +1,5 @@
 <template>
-  <div class="books-list-container flex a-center j-center wrap">
+  <div id="style-1" class="books-list-container flex a-center j-center wrap">
     <div v-for="(book, idx) in books" :key="idx">
       <book-preview :book="book" />
     </div>
@@ -14,10 +14,15 @@ export default {
   name: "book-list",
   props: ["books"],
   components: {
-    BookPreview
-  }
+    BookPreview,
+  },
 };
 </script>
 
 <style scoped lang="scss">
+.books-list-container {
+  height: 400px;
+  overflow: auto;
+  height: 100%;
+}
 </style>

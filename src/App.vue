@@ -8,7 +8,7 @@
       </div>
     </div>
     <router-view />
-    <notifications group="book-add" position="bottom left" speed="700" width="500" hieght="400" />
+    <notifications group="book-add" position="bottom left" :speed="700" width="500" hieght="400" />
   </div>
 </template>
 <script>

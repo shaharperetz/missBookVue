@@ -56,7 +56,7 @@ export default {
 
 .book-details-container img:hover {
   transform: scale(1.1);
-  filter: brightness(1.6);
+  filter: brightness(1.3);
 }
 .book-details-container button {
   height: 3vh;
